@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class AroundExample {
 
-	@Around("execution(* org.foo.Some.doSomething(..)) && args(param,..)")
-	public Object aroundDoSomething(ProceedingJoinPoint pjp, String param) throws Throwable {
-		System.err.println("aroundDoSomething: " + param);
+	@Around(value = "execution(* org.foo.Some.doSomething(..)) && args(param1,param2,..)", argNames = "param1,param2")
+	public Object aroundDoSomething(ProceedingJoinPoint pjp, String param1, String param2) throws Throwable {
+		System.err.println("aroundDoSomething: " + param1);
 		Object retVal = pjp.proceed();
 		return retVal;
 	}

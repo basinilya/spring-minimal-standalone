@@ -11,7 +11,8 @@ public class SpringStandaloneApp {
 		System.err.println("refreshed");
 
 		Some obj = ctx.getBean(Some.class);
-		obj.doSomething("testval");
+		obj.notIntercepted("testval1", "testval2");
+		obj.doSomething("testval1", "testval2");
 
 		System.err.println("stopping");
 		ctx.close();
