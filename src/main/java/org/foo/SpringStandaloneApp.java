@@ -10,6 +10,9 @@ public class SpringStandaloneApp {
 		ctx.refresh();
 		System.err.println("refreshed");
 
+		Some obj = ctx.getBean(Some.class);
+		obj.doSomething("testval");
+
 		System.err.println("stopping");
 		ctx.close();
 		System.err.println("stopped");

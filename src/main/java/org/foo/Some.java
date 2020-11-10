@@ -1,5 +1,5 @@
 package org.foo;
 
 public interface Some {
-	void doSomething();
+	String doSomething(String param);
 }
