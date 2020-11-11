@@ -1,6 +1,5 @@
 package org.foo;
 
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
@@ -18,8 +17,11 @@ public class AroundExample {
 		return retVal;
 	}
 
-	@AfterReturning(pointcut = "execution(* org.foo.Some.doSomething(..)) && args(param,..)", returning = "retval", argNames = "retval,param")
-	public void afterDoSomething(JoinPoint jp, String retval, String param) throws Throwable {
+	@AfterReturning(pointcut = "execution(* org.foo.Some.doSomething(..)) && target(target) && args(param,..)", returning = "retval", argNames = "target,retval,param")
+	public void afterDoSomething(
+			// JoinPoint jp,
+			Some target, String retval, String param) throws Throwable {
+		// jp.getThis();
 		System.err.println("afterDoSomething: " + param + " " + retval);
 	}
 
