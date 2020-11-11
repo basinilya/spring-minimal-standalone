@@ -17,7 +17,11 @@ public class AroundExample {
 		return retVal;
 	}
 
-	@AfterReturning(pointcut = "execution(* org.foo.Some.doSomething(..)) && target(target) && args(param,..)", returning = "retval", argNames = "target,retval,param")
+	@AfterReturning(pointcut = "execution(* " + "org.foo.Some.doSomething" + "(..))" //
+	// + " && bean(someImpl)" //
+			+ " && target(target) && args(param,..)", returning = "retval" //
+			, argNames = "target,retval,param" //
+	)
 	public void afterDoSomething(
 			// JoinPoint jp,
 			Some target, String retval, String param) throws Throwable {
